@@ -8,7 +8,7 @@ function Posts({ post }) {
 
     return (
         <>
-            <div className="card" style={{ width: '18rem', marginBottom: '4px' }}>
+            <div className="card" style={{ width: '20rem', marginBottom: '4px' }}>
                 <img className="card-img-top" src={logo} alt="Card image cap" />
                 <div className="card-body" >
                     <h5 className="card-title mb-0">{post.title}</h5>

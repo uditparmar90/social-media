@@ -11,19 +11,52 @@ const DEFAULT_CONTEXT = {
 const PostList = createContext(DEFAULT_CONTEXT);
 
 // Reducer function to handle actions
-const postListReducer = (cuurPostList, action) => {
-    return (cuurPostList)
+const postListReducer = (currPostList, action) => {
+    let newPostList = currPostList
+    switch (action.type) {
+        case ('DELETE_POST'):
+            newPostList = currPostList.filter(post => post.id !== action.payload.postId)
+            break;
+
+        case ('ADD_POST'):
+            newPostList = [action.payload, ...currPostList]
+
+
+
+            break;
+    }
+    return (newPostList)
 };
 
 // Provider component
 const PostListProvider = ({ children }) => {
     const [postList, dispatchPostList] = useReducer(postListReducer, DEFAULT_POST_LIST);
 
-    const addPost = () => {
+    const addPost = (userId, title, desc, tags, likes) => {
+
+        console.log(userId, title, desc, tags, likes)
+        dispatchPostList({
+            type: 'ADD_POST',
+            payload: {
+                id: Date.now(),
+                userId: userId,
+                title: title,
+                desc: desc,
+                tags: tags,
+                likes: likes,
+
+
+            }
+        })
     };
 
-    const deletePost = (id) => {
-        console.log(id)
+    const deletePost = (postId) => {
+        dispatchPostList({
+            type: 'DELETE_POST',
+            payload: {
+                postId: postId,
+            }
+        })
     };
 
     return (
