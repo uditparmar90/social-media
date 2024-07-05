@@ -12,7 +12,7 @@ function Sidebar({ selectedTab, setSelectedTab }) {
             </a>
             <hr />
             <ul className="nav nav-pills flex-column mb-auto">
-                <li className="nav-item" onClick={() => { console.log('home'); setSelectedTab('Home') }}>
+                <li className="nav-item" onClick={() => { setSelectedTab('Home') }}>
                     <a href="#" className={`nav-link link-dark ${selectedTab === 'Home' && 'active'}`} aria-current="page">
                         <GoHomeFill className="bi me-2" size={16} />
                         Home

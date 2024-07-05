@@ -30,7 +30,7 @@ const postListReducer = (currPostList, action) => {
 
 // Provider component
 const PostListProvider = ({ children }) => {
-    const [postList, dispatchPostList] = useReducer(postListReducer, DEFAULT_POST_LIST);
+    const [postList, dispatchPostList] = useReducer(postListReducer, []);
 
     const addPost = (userId, title, desc, tags, likes) => {
 
@@ -65,6 +65,8 @@ const PostListProvider = ({ children }) => {
         </PostList.Provider>
     );
 };
+// const DEFAULT_POST_LIST = fetch('https://dummyjson.com/carts').then(res => res.json()).then(data => (data.carts))
+// console.log(DEFAULT_POST_LIST);
 const DEFAULT_POST_LIST = [{
     id: '1',
     title: 'mumbai',
