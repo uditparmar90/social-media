@@ -4,14 +4,17 @@ import { PostList as postListData } from "../contexts/post-list-context";
 import WelcomeMsg from './WelcomeMsg';
 
 function PostList() {
+    const { postList, addInitialPost } = useContext(postListData)
     const handleshowPosts = () => {
-        console.log('handleshowPosts')
+        fetch('https://dummyjson.com/posts').then(res => res.json()).then(data => addInitialPost(data.posts)
+        )
+        console.log({ handleshowPosts });
 
     }
-    const { postList } = useContext(postListData)
+
     return (
         <>
-            <div style={{ flexDirextion: 'column', display: 'content' }}>
+            <div style={{ flexDirection: 'column', display: 'content' }}>
                 {postList.length === 0 && <WelcomeMsg showPosts={handleshowPosts}></WelcomeMsg>}
                 {postList.map((post) => <Posts key={post.id} post={post} />)}
             </div>

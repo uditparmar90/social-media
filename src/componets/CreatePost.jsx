@@ -9,7 +9,7 @@ function CreatePost() {
     const titleElement = useRef();
     const descElement = useRef();
     const tagsElement = useRef();
-    const likesElement = useRef();
+    const reactionsElement = useRef();
 
     const haldleSubmit = (event) => {
         event.preventDefault();
@@ -17,14 +17,14 @@ function CreatePost() {
         const title = titleElement.current.value;
         const desc = descElement.current.value;
         const tags = tagsElement.current.value.split(' ');
-        const likes = likesElement.current.value;
+        const reactions = reactionsElement.current.value;
 
         userIdElement.current.value = '';
         titleElement.current.value = '';
         descElement.current.value = '';
         tagsElement.current.value = '';
-        likesElement.current.value = '';
-        addPost(userId, title, desc, tags, likes)
+        reactionsElement.current.value = '';
+        addPost(userId, title, desc, tags, reactions)
 
 
 
@@ -52,8 +52,8 @@ function CreatePost() {
                 <input type="text" className="form-control" id="tag" aria-describedby="emailHelp" placeholder="Enter tag" ref={tagsElement} />
             </div>
             <div className="form-group">
-                <label htmlFor="likes">Likes</label>
-                <input type="number" className="form-control" id="likes" placeholder="likes" ref={likesElement} />
+                <label htmlFor="reactions">reactions</label>
+                <input type="number" className="form-control" id="reactions" placeholder="reactions" ref={reactionsElement} />
             </div>
             {/* <div className="form-check">
                 <input type="checkbox" className="form-check-input" id="exampleCheck1" />
